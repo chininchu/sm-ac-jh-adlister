@@ -3,6 +3,7 @@ package com.codeup.adlister.controllers;
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.User;
 import com.codeup.adlister.util.Password;
+import com.codeup.adlister.util.ValidateData;
 import org.mindrot.jbcrypt.BCrypt;
 
 import javax.servlet.ServletException;
@@ -27,7 +28,7 @@ public class RegisterServlet extends HttpServlet {
         // validate input
         boolean inputHasErrors = username.isEmpty()
             || email.isEmpty()
-            || password.isEmpty()
+            || password.isEmpty() || ValidateData.passwordPolicy(passwordConfirmation)
             || (! password.equals(passwordConfirmation));
 
         if (inputHasErrors) {
