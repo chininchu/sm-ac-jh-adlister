@@ -1,6 +1,7 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
 import java.io.FileInputStream;
@@ -17,9 +18,9 @@ public class MySQLAdsDao implements Ads {
         try {
             DriverManager.registerDriver(new Driver());
             connection = DriverManager.getConnection(
-                config.getURL(),
-                config.getUSER(),
-                config.getPASSWORD()
+                    config.getURL(),
+                    config.getUSER(),
+                    config.getPASSWORD()
             );
         } catch (SQLException e) {
             throw new RuntimeException("Error connecting to the database!", e);
@@ -57,10 +58,10 @@ public class MySQLAdsDao implements Ads {
 
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(
-            rs.getLong("id"),
-            rs.getLong("user_id"),
-            rs.getString("title"),
-            rs.getString("description")
+                rs.getLong("id"),
+                rs.getLong("user_id"),
+                rs.getString("title"),
+                rs.getString("description")
         );
     }
 
@@ -71,4 +72,20 @@ public class MySQLAdsDao implements Ads {
         }
         return ads;
     }
+
+
+//    public Ad singleAd(long id) {
+//        // Retrieve data from a data source
+//
+//
+//        // Perform search based on keyword
+//
+//
+//    }
+
+
 }
+
+
+
+
