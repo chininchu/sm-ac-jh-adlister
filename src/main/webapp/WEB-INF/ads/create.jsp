@@ -17,6 +17,35 @@
                 <label for="description">Description</label>
                 <textarea id="description" name="description" class="form-control" type="text"></textarea>
             </div>
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select name="category" id="category">
+                    <option>Art</option>
+                    <option>Automobiles</option>
+                    <option>Aviation</option>
+                    <option>Bicycles</option>
+                    <option>Boat</option>
+                    <option>CD/DVD/VHS</option>
+                    <option>Books & Magazines</option>
+                    <option>Cell Phones</option>
+                    <option>Clothing</option>
+                    <option>Collectibles</option>
+                    <option>Computers</option>
+                    <option>Electronics</option>
+                    <option>Farm & Garden</option>
+                    <option>Furniture</option>
+                    <option>Health & Beauty</option>
+                    <option>Heavy Equipment</option>
+                    <option>Jewelry</option>
+                    <option>Musical Instruments</option>
+                    <option>Pets</option>
+                    <option>Sporting Goods</option>
+                    <option>Tools</option>
+                    <option>Toys & Games</option>
+                    <option>Trailers</option>
+                    <option>Video Games</option>
+                </select>
+            </div>
             <input type="submit" class="btn btn-block btn-primary">
         </form>
     </div>
