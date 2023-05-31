@@ -37,10 +37,18 @@ public class ValidateData {
         }
 
 
+        return true;
+
+
+//        if (!password.matches(".*[!@#$%^&*()-+=|{}[].,<>/?].*")) {
+//            return false;
+//        }
+
+
         // All checks passed, password is valid
 
 
-        return true;
+
 
 
     }

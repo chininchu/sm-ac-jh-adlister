@@ -31,7 +31,9 @@ public class RegisterServlet extends HttpServlet {
 
         boolean passwordPolicy = ValidateData.passwordPolicy(passwordConfirmation);
 
-        if(!passwordPolicy){
+        System.out.println(passwordPolicy);
+
+        if(passwordPolicy){
 
             response.sendRedirect("/register");
             return;
