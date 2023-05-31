@@ -25,16 +25,32 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         String passwordConfirmation = request.getParameter("confirm_password");
 
+
+        // Password Policy Validation
+
+
+        boolean passwordPolicy = ValidateData.passwordPolicy(passwordConfirmation);
+
+        if(!passwordPolicy){
+
+            response.sendRedirect("/register");
+            return;
+
+
+        }
+
         // validate input
         boolean inputHasErrors = username.isEmpty()
             || email.isEmpty()
-            || password.isEmpty() || ValidateData.passwordPolicy(passwordConfirmation)
-            || (! password.equals(passwordConfirmation));
+            || password.isEmpty()
+            || !password.equals(passwordConfirmation);
+
 
         if (inputHasErrors) {
             response.sendRedirect("/register");
             return;
         }
+
 
         // create and save a new user
         User user = new User(username, email, password);
@@ -48,4 +64,6 @@ public class RegisterServlet extends HttpServlet {
         DaoFactory.getUsersDao().insert(user);
         response.sendRedirect("/login");
     }
+
+
 }

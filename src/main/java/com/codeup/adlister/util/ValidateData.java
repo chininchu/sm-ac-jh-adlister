@@ -12,30 +12,46 @@ public class ValidateData {
             return false;
         }
 
+
         // Password should contain at least one uppercase letter
         if (!password.matches(".*[A-Z].*")) {
             return false;
         }
+
 
         // Password should contain at least one lowercase letter
         if (!password.matches(".*[a-z].*")) {
             return false;
         }
 
+
         // Password should contain at least one digit
         if (!password.matches(".*\\d.*")) {
             return false;
         }
 
-        // Password should contain at least one special character
-        if (!password.matches(".*[!@#$%^&*()-+=|{}[].,<>/?].*")) {
+
+//         Password should contain at least one special character
+        if (!".*[!@#$%^&*()-+=|{}[].,<>/?].*".matches(password)) {
             return false;
         }
 
+
         // All checks passed, password is valid
+
+
         return true;
+
+
     }
 
+
+//    public static void main(String[] args) {
+//
+//        System.out.println(ValidateData.passwordPolicy("password1"));
+//
+//
+//    }
 
 
 }
