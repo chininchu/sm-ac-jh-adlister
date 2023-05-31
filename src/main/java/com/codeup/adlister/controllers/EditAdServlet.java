@@ -13,7 +13,7 @@ public class EditAdServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         // Servlet logic for handling GET requests
-        request.getRequestDispatcher();
+//        request.getRequestDispatcher("");
 
     }
 
