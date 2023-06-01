@@ -6,6 +6,8 @@
     </jsp:include>
 </head>
 <body>
+    <%@ include file="/WEB-INF/partials/message.jsp" %>
+
     <jsp:include page="partials/navbar.jsp" />
     <div class="container">
         <h1>Please fill in your information.</h1>

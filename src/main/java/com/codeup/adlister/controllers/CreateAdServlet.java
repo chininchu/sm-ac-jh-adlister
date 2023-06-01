@@ -27,11 +27,19 @@ public class CreateAdServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         User loggedInUser = (User) request.getSession().getAttribute("user");
-        Ad ad = new Ad(
-            loggedInUser.getId(),
-            request.getParameter("title"),
-            request.getParameter("description")
-        );
+        String title = request.getParameter("title");
+        String description = request.getParameter("description");
+
+        if (title.isEmpty()) {
+            String createAddWithoutTitle = "No title";
+            request.getSession().setAttribute("createAddWithoutTitle", createAddWithoutTitle);
+            response.getWriter().print("<script>alert('No title inputted'); window.location.href='/ads';</script>");
+            response.sendRedirect("/ads/create");
+
+            return;
+        }
+
+        Ad ad = new Ad(loggedInUser.getId(), title, description);
         DaoFactory.getAdsDao().insert(ad);
         response.sendRedirect("/ads");
     }
