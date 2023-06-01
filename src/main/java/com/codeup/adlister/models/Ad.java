@@ -6,12 +6,17 @@ public class Ad {
     private String title;
     private String description;
 
+
+    // This constructor is used when a single instance of an ad id being retrieved
+
     public Ad(long id, long userId, String title, String description) {
         this.id = id;
         this.userId = userId;
         this.title = title;
         this.description = description;
     }
+
+    // This constructor is used when a single instance of an Ad is being inserted
 
     public Ad(long userId, String title, String description) {
         this.userId = userId;

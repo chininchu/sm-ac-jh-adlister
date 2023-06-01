@@ -1,6 +1,7 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
 import java.io.FileInputStream;
@@ -17,9 +18,9 @@ public class MySQLAdsDao implements Ads {
         try {
             DriverManager.registerDriver(new Driver());
             connection = DriverManager.getConnection(
-                config.getURL(),
-                config.getUSER(),
-                config.getPASSWORD()
+                    config.getURL(),
+                    config.getUSER(),
+                    config.getPASSWORD()
             );
         } catch (SQLException e) {
             throw new RuntimeException("Error connecting to the database!", e);
@@ -57,10 +58,10 @@ public class MySQLAdsDao implements Ads {
 
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(
-            rs.getLong("id"),
-            rs.getLong("user_id"),
-            rs.getString("title"),
-            rs.getString("description")
+                rs.getLong("id"),
+                rs.getLong("user_id"),
+                rs.getString("title"),
+                rs.getString("description")
         );
     }
 
@@ -72,4 +73,71 @@ public class MySQLAdsDao implements Ads {
         return ads;
     }
 
+ andrew-chu
+
+    // This method will retrieve a single Ad so that the user is able to view what they are editing
+
+
+    public Ad singleAd(long id) {
+
+
+        try {
+
+            // Create and execute the SQL query
+            PreparedStatement stmt = null;
+            stmt = connection.prepareStatement("SELECT * FROM ads  WHERE id = ? LIMIT 1");
+            stmt.setLong(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            // Retrieve the data from the row
+
+            rs.next();
+
+            Ad singleAd = extractAd(rs);
+
+
+            // Returns a single instance
+
+            return singleAd;
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving an ad.", e);
+        }
+
+
+    }
+
+
+    @Override
+    public void editAd(Ad ad) {
+
+
+        try {
+
+            // Create and execute the SQL query
+            PreparedStatement stmt = null;
+            stmt = connection.prepareStatement("UPDATE ads SET title = ?, description = ? WHERE id = ? LIMIT 1");
+            stmt.setString(1, ad.getTitle());
+            stmt.setString(2, ad.getDescription());
+            stmt.setLong(3, ad.getId());
+
+
+            stmt.executeUpdate();
+
+
+        } catch (Exception e) {
+            throw new RuntimeException("Error retrieving an ad.", e);
+        }
+
+
+    }
+
+
+
+ finish-adlister
 }
+
+
+
+

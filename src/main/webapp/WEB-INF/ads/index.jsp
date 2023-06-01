@@ -27,10 +27,16 @@
         <form action="/editAd" method="get">
 
             <div class="col-md-6">
-                <h2 type="text">${ad.title}</h2>
-                <button type="button">Edit</button>
+                <h2> ${ad.title}</h2>
+                <input name="title" type="hidden" value="${ad.title}">
+
+            <%--                <button type="hidden" value="${ad.id}">Edit</button>--%>
                 <p>${ad.description}</p>
-                <button type="button">Edit</button>
+
+                <input name="description" type="hidden" value="${ad.description}">
+
+                <button>Edit</button>
+                <input name="id" type="hidden" value="${ad.id}">
             </div>
         </form>
 
