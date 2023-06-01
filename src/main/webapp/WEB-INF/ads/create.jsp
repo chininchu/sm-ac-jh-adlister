@@ -6,6 +6,8 @@
     </jsp:include>
 </head>
 <body>
+<%@ include file="/WEB-INF/partials/message.jsp" %>
+
     <div class="container">
         <h1>Create a new Ad</h1>
         <form action="/ads/create" method="post">

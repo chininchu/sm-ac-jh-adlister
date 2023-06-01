@@ -5,12 +5,19 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Viewing All The Ads"/>
     </jsp:include>
+    <link rel="stylesheet" href="/CSS/main.css">
+    <style>
+        h1{
+            text-decoration: blue;
+        }
+    </style>
+
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 
 <div class="container">
-    <h1>Here Are all the ads!</h1>
+    <h1>List of all Ads: </h1>
 
     <c:forEach var="ad" items="${ads}">
         <%--        <div class="col-md-6">--%>
@@ -25,7 +32,7 @@
         <%--        </div>--%>
 
         <form action="/editAd" method="get">
-
+        <div class="container">
             <div class="col-md-6">
                 <h2> ${ad.title}</h2>
                 <input name="title" type="hidden" value="${ad.title}">
@@ -38,6 +45,7 @@
                 <button>Edit</button>
                 <input name="id" type="hidden" value="${ad.id}">
             </div>
+        </div>
         </form>
 
 

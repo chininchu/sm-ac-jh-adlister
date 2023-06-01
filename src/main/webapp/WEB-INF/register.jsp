@@ -4,8 +4,12 @@
     <jsp:include page="partials/head.jsp">
         <jsp:param name="title" value="Register For Our Site!" />
     </jsp:include>
+    <link rel="stylesheet" href="/CSS/main.css">
+
 </head>
 <body>
+    <%@ include file="/WEB-INF/partials/message.jsp" %>
+
     <jsp:include page="partials/navbar.jsp" />
     <div class="container">
         <h1>Please fill in your information.</h1>

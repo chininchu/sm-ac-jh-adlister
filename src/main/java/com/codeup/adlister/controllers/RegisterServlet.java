@@ -25,6 +25,9 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         String passwordConfirmation = request.getParameter("confirm_password");
 
+        String registrationErrorMessage = "Passwords don't match";
+        request.getSession().setAttribute("registrationErrorMessage", registrationErrorMessage);
+
 
         // Password Policy Validation
 

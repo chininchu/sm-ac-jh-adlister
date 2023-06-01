@@ -73,7 +73,24 @@ public class MySQLAdsDao implements Ads {
         return ads;
     }
 
- andrew-chu
+    public List<Ad> adsByUserId(long userId) {
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("SELECT * FROM ads WHERE user_id=?");
+
+            stmt.setLong(1, userId);
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
+    }
+
+    @Override
+    public void delete(Ad ad) {
+
+    }
+
 
     // This method will retrieve a single Ad so that the user is able to view what they are editing
 
@@ -135,7 +152,6 @@ public class MySQLAdsDao implements Ads {
 
 
 
- finish-adlister
 }
 
 
