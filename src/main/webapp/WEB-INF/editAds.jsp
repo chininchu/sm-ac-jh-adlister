@@ -20,10 +20,10 @@
 
 
     <label for="title">Title:</label>
-    <input type="text" id="title" name="title" required><br><br>
+    <input value= "${singleAd.title}" type="text" id="title" name="title" required><br><br>
 
     <label for="description">Description:</label>
-    <input type="text" id="description" name="description" required><br><br>
+    <input value= "${singleAd.description}"type="text" id="description" name="description" required><br><br>
 
 
 

@@ -55,4 +55,9 @@ public class ListAdsDao implements Ads {
         ));
         return ads;
     }
+
+    @Override
+    public Ad singleAd(long id) {
+        return null;
+    }
 }

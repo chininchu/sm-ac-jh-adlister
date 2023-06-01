@@ -74,7 +74,10 @@ public class MySQLAdsDao implements Ads {
     }
 
 
-    public String singleAd(long id) {
+    // This method will retrieve a single Ad so that the user is able to view what they are editing
+
+
+    public Ad singleAd(long id) {
 
 
         try {
@@ -87,12 +90,14 @@ public class MySQLAdsDao implements Ads {
 
             // Retrieve the data from the row
 
+            rs.next();
 
-            String ad = rs.getLong("id") + rs.getLong("user_id") + rs.getString("title") + rs.getString("description");
+            Ad singleAd = extractAd(rs);
+
 
             // Returns a single instance
 
-            return ad;
+            return singleAd;
 
 
         } catch (SQLException e) {

@@ -9,4 +9,11 @@ public interface Ads {
     List<Ad> all();
     // insert a new ad and return the new ad's id
     Long insert(Ad ad);
+
+    // Retrieves a single Ad for a user so that they know what is being edited on the jsp page
+
+    Ad singleAd(long id);
+
+
+
 }
