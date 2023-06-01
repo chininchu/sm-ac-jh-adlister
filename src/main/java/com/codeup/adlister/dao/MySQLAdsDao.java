@@ -74,14 +74,33 @@ public class MySQLAdsDao implements Ads {
     }
 
 
-//    public Ad singleAd(long id) {
-//        // Retrieve data from a data source
-//
-//
-//        // Perform search based on keyword
-//
-//
-//    }
+    public String singleAd(long id) {
+
+
+        try {
+
+            // Create and execute the SQL query
+            PreparedStatement stmt = null;
+            stmt = connection.prepareStatement("SELECT * FROM ads  WHERE id = ? LIMIT 1");
+            stmt.setLong(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            // Retrieve the data from the row
+
+
+            String ad = rs.getLong("id") + rs.getLong("user_id") + rs.getString("title") + rs.getString("description");
+
+            // Returns a single instance
+
+            return ad;
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving an ad.", e);
+        }
+
+
+    }
 
 
 }
