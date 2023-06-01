@@ -73,6 +73,7 @@ public class MySQLAdsDao implements Ads {
         return ads;
     }
 
+ andrew-chu
 
     // This method will retrieve a single Ad so that the user is able to view what they are editing
 
@@ -133,6 +134,8 @@ public class MySQLAdsDao implements Ads {
     }
 
 
+
+ finish-adlister
 }
 
 
