@@ -14,8 +14,17 @@ public interface Ads {
 
     void delete(Ad ad);
 
-    void deleteAds(long adId) throws SQLException;
 
-    Ad getAdsById(long Id);
+    // Retrieves a single Ad for a user so that they know what is being edited on the jsp page
+
+    Ad singleAd(long id);
+
+
+    // Edits a single Ad
+
+    void editAd(Ad ad);
+
+
+
 
 }

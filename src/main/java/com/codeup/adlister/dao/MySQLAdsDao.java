@@ -1,6 +1,7 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
 import java.io.FileInputStream;
@@ -90,37 +91,69 @@ public class MySQLAdsDao implements Ads {
 
     }
 
-    @Override
-    public void deleteAds(long adId) throws SQLException {
-            try {
-                String deleteQuery = "DELETE FROM ads WHERE id = ?";
-                PreparedStatement stmt = connection.prepareStatement(deleteQuery, Statement.RETURN_GENERATED_KEYS);
-                stmt.setString(1, String.valueOf(adId));
-                stmt.executeUpdate();
-                ResultSet rs = stmt.getGeneratedKeys();
-                rs.next();
-            } catch (SQLException e) {
-                throw new RuntimeException("Error deleting ad.", e);
-            }
+
+    // This method will retrieve a single Ad so that the user is able to view what they are editing
+
+
+    public Ad singleAd(long id) {
+
+
+        try {
+
+            // Create and execute the SQL query
+            PreparedStatement stmt = null;
+            stmt = connection.prepareStatement("SELECT * FROM ads  WHERE id = ? LIMIT 1");
+            stmt.setLong(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            // Retrieve the data from the row
+
+            rs.next();
+
+            Ad singleAd = extractAd(rs);
+
+
+            // Returns a single instance
+
+            return singleAd;
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving an ad.", e);
+        }
+
+
     }
 
+
     @Override
-    public Ad getAdsById(long adId) {
+    public void editAd(Ad ad) {
+
+
         try {
-            String query = "SELECT * FROM ads WHERE id = ?";
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.setLong(1, adId);
-            ResultSet resultSet = statement.executeQuery();
-            if (resultSet.next()) {
-                String title = resultSet.getString("title");
-                String description = resultSet.getString("description");
-                return new Ad(adId, title, description);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+
+            // Create and execute the SQL query
+            PreparedStatement stmt = null;
+            stmt = connection.prepareStatement("UPDATE ads SET title = ?, description = ? WHERE id = ? LIMIT 1");
+            stmt.setString(1, ad.getTitle());
+            stmt.setString(2, ad.getDescription());
+            stmt.setLong(3, ad.getId());
+
+
+            stmt.executeUpdate();
+
+
+        } catch (Exception e) {
+            throw new RuntimeException("Error retrieving an ad.", e);
         }
-        return null;
+
+
     }
-    }
+
+
+
+}
+
+
 
 
