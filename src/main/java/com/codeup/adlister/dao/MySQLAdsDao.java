@@ -84,5 +84,43 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error retrieving all ads.", e);
         }
     }
-}
+
+    @Override
+    public void delete(Ad ad) {
+
+    }
+
+    @Override
+    public void deleteAds(long adId) throws SQLException {
+            try {
+                String deleteQuery = "DELETE FROM ads WHERE id = ?";
+                PreparedStatement stmt = connection.prepareStatement(deleteQuery, Statement.RETURN_GENERATED_KEYS);
+                stmt.setString(1, String.valueOf(adId));
+                stmt.executeUpdate();
+                ResultSet rs = stmt.getGeneratedKeys();
+                rs.next();
+            } catch (SQLException e) {
+                throw new RuntimeException("Error deleting ad.", e);
+            }
+    }
+
+    @Override
+    public Ad getAdsById(long adId) {
+        try {
+            String query = "SELECT * FROM ads WHERE id = ?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setLong(1, adId);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                String title = resultSet.getString("title");
+                String description = resultSet.getString("description");
+                return new Ad(adId, title, description);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    }
+
 

@@ -70,6 +70,36 @@ public class MySQLUsersDao implements Users {
         }
     }
 
+    public void deleteAds(long adId) throws SQLException {
+        try {
+            String deleteQuery = "DELETE FROM ads WHERE id = ?";
+            PreparedStatement stmt = connection.prepareStatement(deleteQuery, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, String.valueOf(adId));
+            stmt.executeUpdate();
+            ResultSet rs = stmt.getGeneratedKeys();
+            rs.next();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error deleting ad.", e);
+        }
+    }
+    public void delete(long userId) {
+        try {
+            String deleteQuery = "DELETE FROM users WHERE id = ?";
+            PreparedStatement stmt = connection.prepareStatement(deleteQuery);
+            stmt.setLong(1, userId);
+            stmt.executeUpdate();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error deleting user.", e);
+        }
+    }
+
+    @Override
+    public void edit(User user) {
+
+    }
+
+
     private User extractUser(ResultSet rs) throws SQLException {
         if (! rs.next()) {
             return null;
@@ -82,4 +112,6 @@ public class MySQLUsersDao implements Users {
         );
     }
 
-}
+    }
+
+
