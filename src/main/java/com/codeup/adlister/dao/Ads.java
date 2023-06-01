@@ -15,5 +15,11 @@ public interface Ads {
     Ad singleAd(long id);
 
 
+    // Edits a single Ad
+
+    void editAd(Ad ad);
+
+
+
 
 }

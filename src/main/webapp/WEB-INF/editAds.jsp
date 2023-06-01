@@ -17,17 +17,16 @@
 <form action="/editAd" method="post">
 
 
-
-
     <label for="title">Title:</label>
-    <input value= "${singleAd.title}" type="text" id="title" name="title" required><br><br>
+    <input value="${singleAd.title}" type="text" id="title" name="title" required><br><br>
 
     <label for="description">Description:</label>
-    <input value= "${singleAd.description}"type="text" id="description" name="description" required><br><br>
+    <input value="${singleAd.description}" type="text" id="description" name="description" required><br><br>
+
+    <button>Submit</button>
 
 
-
-    <input type="submit" value="Submit">
+    <input name="id" type="hidden" value="${singleAd.id}">
 </form>
 
 

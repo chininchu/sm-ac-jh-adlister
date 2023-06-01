@@ -7,7 +7,7 @@ public class Ad {
     private String description;
 
 
-    // This constructor is used when a single instance of an add id being retrieved
+    // This constructor is used when a single instance of an ad id being retrieved
 
     public Ad(long id, long userId, String title, String description) {
         this.id = id;
