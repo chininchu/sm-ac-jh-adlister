@@ -32,9 +32,9 @@ public class ValidateData {
 
 
 //         Password should contain at least one special character
-        if (!".*[!@#$%^&*()-+=|{}[].,<>/?].*".matches(password)) {
-            return false;
-        }
+//        if (!".*[!@#$%^&*()-+=|{}[].,<>/?].*".matches(password)) {
+//            return false;
+//        }
 
 
         return true;
