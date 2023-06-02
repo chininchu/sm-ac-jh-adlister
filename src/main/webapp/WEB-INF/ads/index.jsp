@@ -61,6 +61,7 @@
                 <div class="ad-bubble">
                     <h2 class="ad-title">${ad.title}</h2>
                     <p class="ad-description">${ad.description}</p>
+                    <p>${ad.categories}</p>
                     <div class="ad-actions">
                         <form action="/editAd" method="get">
                             <input name="title" type="hidden" value="${ad.title}">
