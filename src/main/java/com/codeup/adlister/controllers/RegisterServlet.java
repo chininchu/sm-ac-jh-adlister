@@ -36,7 +36,7 @@ public class RegisterServlet extends HttpServlet {
 
         System.out.println(passwordPolicy);
 
-        if(passwordPolicy){
+        if(!(passwordPolicy)){
 
             response.sendRedirect("/register");
             return;
