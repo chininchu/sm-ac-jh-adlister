@@ -7,4 +7,6 @@ import java.util.List;
 public interface Ad_Categories {
     List<Ad_Category> all();
     void insert(Ad_Category adCategory);
+
+    List<Ad_Category> getByAdId(long id);
 }

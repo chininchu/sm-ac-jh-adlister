@@ -48,6 +48,30 @@ public class MySQLAd_CategoriesDao implements Ad_Categories {
         }
     }
 
+    @Override
+    public List<Ad_Category> getByAdId(long id) {
+        PreparedStatement stmt = null;
+        try{
+            String query = "SELECT ad_id FROM ad_categories WHERE ad_id LIKE ?";
+            String searchWithWildcards = "%" + id + "%";
+            stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, searchWithWildcards);
+
+            ResultSet rs = stmt.executeQuery();
+            List<Ad_Category> adCategories = new ArrayList<>();
+            while (rs.next()){
+                adCategories.add(new Ad_Category(
+                    id,
+                    rs.getInt("category_id")
+                ));
+            }
+            return adCategories;
+        } catch (SQLException e){
+            throw new RuntimeException("Failed to receive and");
+        }
+    }
+
+
     private Ad_Category extractCategory(ResultSet rs) throws SQLException {
         return new Ad_Category(
                 rs.getInt("ad_id"),

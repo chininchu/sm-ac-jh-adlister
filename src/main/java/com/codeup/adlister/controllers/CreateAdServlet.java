@@ -42,10 +42,8 @@ public class CreateAdServlet extends HttpServlet {
         }
 
         Ad ad = new Ad(loggedInUser.getId(), title, description);
-        DaoFactory.getAdsDao().insert(ad);
 
         String[] category = request.getParameterValues("Category");
-        System.out.println(Arrays.toString(category));
         //sets the ad id to a long
         Long num = DaoFactory.getAdsDao().insert(ad);
 
