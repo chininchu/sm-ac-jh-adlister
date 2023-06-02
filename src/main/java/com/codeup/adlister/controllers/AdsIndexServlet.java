@@ -18,13 +18,15 @@ import java.util.Map;
 public class AdsIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("ads", DaoFactory.getAdsDao().all());
-        Map<Long, Ad_Category> adCategoryMap = new HashMap<>();
-        List<Ad> ads = DaoFactory.getAdsDao().all();
-        for (Ad ad : ads){
-            Ad_Category adCategory = (Ad_Category) DaoFactory.getAd_CategoriesDao().getByAdId(ad.getId());
-            adCategoryMap.put(ad.getId(), adCategory);
-        }
-        request.setAttribute("ad_categories", adCategoryMap);
+//
+//        Map<Long, List<Ad_Category>> adCategoryMap = new HashMap<>();
+//        List<Ad> ads = DaoFactory.getAdsDao().all();
+//        for (Ad ad : ads){
+//            List<Ad_Category> adCategories = DaoFactory.getAd_CategoriesDao().getByAdId(ad.getId());
+//            adCategoryMap.put(ad.getId(), adCategories);
+//        }
+//        System.out.println(adCategoryMap);
+//        request.setAttribute("ad_categories", adCategoryMap);
         request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
 
 

@@ -40,7 +40,9 @@
             <%--                <button type="hidden" value="${ad.id}">Edit</button>--%>
                 <p>${ad.description}</p>
 
-                <input name="description" type="hidden" value="${ad.description}">
+                <p>${ad.categories}</p>
+
+                <input name="description" type="hidden" value="${ad.description.toString()}">
 
                 <button>Edit</button>
                 <input name="id" type="hidden" value="${ad.id}">
