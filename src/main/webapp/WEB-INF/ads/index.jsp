@@ -61,6 +61,7 @@
                 <div class="ad-bubble">
                     <h2 class="ad-title">${ad.title}</h2>
                     <p class="ad-description">${ad.description}</p>
+                    <p>${ad.categories}</p>
                     <div class="ad-actions">
                         <form action="/editAd" method="get">
                             <input name="title" type="hidden" value="${ad.title}">
@@ -68,52 +69,70 @@
                             <input name="id" type="hidden" value="${ad.id}">
                             <button>Edit</button>
                         </form>
+                        <form action="/deleteAd" method="post">
+                            <!-- Input field for Advertisement ID -->
+
+                            <button>Delete</button>
+
+                            <input name="id" type="hidden" value="${ad.id}">
+
+                            <input name="title" type="hidden" value="${ad.title}">
+
+                            <input name="description" type="hidden" value="${ad.description}">
+
+
+                        </form>
                     </div>
                 </div>
             </div>
         </c:forEach>
     </div>
-=======
-    <c:forEach var="ad" items="${ads}">
+<%--=======--%>
+<%--    <c:forEach var="ad" items="${ads}">--%>
 
 
-        <form action="/editAd" method="get">
-            <div class="container">
-                <div class="col-md-6">
-                    <h2> ${ad.title}</h2>
-                    <input name="title" type="hidden" value="${ad.title}">
+<%--        <form action="/editAd" method="get">--%>
+<%--            <div class="container">--%>
+<%--                <div class="col-md-6">--%>
+<%--                    <h2> ${ad.title}</h2>--%>
+<%--                    <input name="title" type="hidden" value="${ad.title}">--%>
 
 
-                    <p>${ad.description}</p>
+<%--                    <p>${ad.description}</p>--%>
 
-                    <input name="description" type="hidden" value="${ad.description}">
+<%--                    <input name="description" type="hidden" value="${ad.description}">--%>
 
-                    <button>Edit</button>
-                    <input name="id" type="hidden" value="${ad.id}">
+<%--                    <button>Edit</button>--%>
+<%--                    <input name="id" type="hidden" value="${ad.id}">--%>
 
 
+
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </form>--%>
 
                 </div>
             </div>
         </form>
 
 
-        <form action="/deleteAd" method="post">
-            <!-- Input field for Advertisement ID -->
 
-            <button>Delete</button>
+<%--        <form action="/deleteAd" method="post">--%>
+<%--            <!-- Input field for Advertisement ID -->--%>
 
-            <input name="id" type="hidden" value="${ad.id}">
+<%--            <button>Delete</button>--%>
 
-            <input name="title" type="hidden" value="${ad.title}">
+<%--            <input name="id" type="hidden" value="${ad.id}">--%>
 
-            <input name="description" type="hidden" value="${ad.description}">
+<%--            <input name="title" type="hidden" value="${ad.title}">--%>
 
-
-        </form>
+<%--            <input name="description" type="hidden" value="${ad.description}">--%>
 
 
-    </c:forEach>
+<%--        </form>--%>
+
+
+<%--    </c:forEach>--%>
 
     <%--    <form action="/deleteAd" method="get">--%>
     <%--        <!-- Input field for Advertisement ID -->--%>
