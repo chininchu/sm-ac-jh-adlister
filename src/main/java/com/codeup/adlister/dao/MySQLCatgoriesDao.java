@@ -38,7 +38,6 @@ public class MySQLCatgoriesDao implements Categories{
     public int getCategoryId(String x) {
         PreparedStatement statement = null;
         try{
-            System.out.println(x);
             String sql = "SELECT id FROM categories WHERE category_name LIKE ?";
             String searchWithWildcards = "%" + x + "%";
             statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -51,6 +50,23 @@ public class MySQLCatgoriesDao implements Categories{
             throw new RuntimeException("Failed to get the category id", e);
         }
     }
+
+    @Override
+    public String getCategoryName(int x) {
+        PreparedStatement stmt = null;
+        try{
+            String sql = "SELECT category_name FROM categories WHERE id = ?";
+            stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            stmt.setInt(1, x);
+            ResultSet rs = stmt.executeQuery();
+
+            rs.next();
+            return rs.getString("category_name");
+        } catch (SQLException e){
+            throw new RuntimeException("Failed to get the name", e);
+        }
+    }
+
 
     private Category extractCategory(ResultSet rs) throws SQLException{
         return new Category(

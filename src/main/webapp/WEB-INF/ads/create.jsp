@@ -98,7 +98,7 @@
                     <label for="Computers">Computers</label>
                 </div>
                 <div>
-                    <input name="Category" id="Electronics" value=Electronics" type="checkbox">
+                    <input name="Category" id="Electronics" value="Electronics" type="checkbox">
                     <label for="Electronics">Electronics</label>
                 </div>
                 <div>

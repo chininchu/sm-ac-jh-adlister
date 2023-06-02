@@ -106,9 +106,15 @@
 <%--                    <input name="id" type="hidden" value="${ad.id}">--%>
 
 
+
 <%--                </div>--%>
 <%--            </div>--%>
 <%--        </form>--%>
+
+                </div>
+            </div>
+        </form>
+
 
 
 <%--        <form action="/deleteAd" method="post">--%>
