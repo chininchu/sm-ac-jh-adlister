@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -21,6 +22,16 @@
                 <input id="password" name="password" class="form-control" type="password">
             </div>
             <input type="submit" class="btn btn-primary btn-block" value="Log In">
+
+            <h1>Recent Listings</h1>
+            <div class="ads-container">
+            <c:forEach var="ad" items="${ads}">
+                <div class="ad">
+                    <h2 class ="ad-title">${ad.title}</h2>
+                    <p class="ad-description">${ad.description}</p>
+                </div>
+            </c:forEach>
+            </div>
         </form>
     </div>
 </body>

@@ -10,7 +10,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
+    <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+
+<style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -78,7 +80,7 @@
 </head>
 <body>
 <div class="form-container">
-    <h1>Update Page</h1>
+    <h1>Update Profile Information</h1>
     <form action="/update" method="POST">
         <label for="username">Enter Current Username:</label>
         <input type="text" id="username" name="username" required>

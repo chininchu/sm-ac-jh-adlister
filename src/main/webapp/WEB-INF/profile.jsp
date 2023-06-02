@@ -26,7 +26,7 @@
         </c:forEach>
 </div>
     <form method="post" action="delete">
-        <button type="submit">Delete</button>
+        <button type="submit">Delete Your Profile</button>
     </form>
 
 </div>
