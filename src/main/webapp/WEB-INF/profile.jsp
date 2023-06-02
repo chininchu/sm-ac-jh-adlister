@@ -28,6 +28,10 @@
 
             </div>
         </c:forEach>
+</div>
+    <form method="post" action="delete">
+        <button type="submit">Delete Your Profile</button>
+    </form>
     </div>
 
 <%--    <form method="post" action="/profile">--%>
