@@ -49,6 +49,7 @@ public class DeleteAdServlet extends HttpServlet {
 //        Ad ad = new Ad(userId, adId, title, description);
 //
 //        DaoFactory.getAdsDao().deleteAd(ad);
+        System.out.println("delete servlet do get");
 //
 //
 //
@@ -63,6 +64,8 @@ public class DeleteAdServlet extends HttpServlet {
 
 
         // We will set the Sessions attribute so that we can gain access to the userId
+
+
 
 
         User user = (User) req.getSession().getAttribute("user");
@@ -81,11 +84,12 @@ public class DeleteAdServlet extends HttpServlet {
 
         String description = req.getParameter("description");
 
-        // Use a method from a Dao Factory to call a method that will delete an instance of the add
+        // Use a method from a Dao Factory to call a method that will delete an instance of the add. The order of the parameter matters.
 
-        Ad ad = new Ad(userId, adId, title, description);
+        Ad ad = new Ad(adId,userId, title, description);
 
         DaoFactory.getAdsDao().deleteAd(ad);
+        System.out.println("delete servlet do post");
 
 
         resp.sendRedirect("/ads");

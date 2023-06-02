@@ -42,7 +42,7 @@
         </form>
 
 
-        <form action="/deleteAd" method="get">
+        <form action="/deleteAd" method="post">
             <!-- Input field for Advertisement ID -->
 
             <button>Delete</button>
