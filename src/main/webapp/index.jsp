@@ -17,7 +17,7 @@
         white-space: nowrap;
         margin: 0 auto;
         letter-spacing: .4rem;
-        animation: demo-typewriter 7s steps(30, end), demo-cursor 1s step-end infinite;
+        animation: demo-typewriter 5s steps(30, end), demo-cursor 1s step-end infinite;
     }
     @keyframes demo-typewriter {
         from {
@@ -41,13 +41,20 @@
         font-size: 60px;
         font-weight: bold;
         text-align: center;
-        color: #ab968a;
+        color: #3d2c23;
     }
 </style>
 </head>
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="container-head">
+        <h1>WELCOME TO THE ADLISTER!</h1>
+        <h1>WELCOME TO THE ADLISTER!</h1>
+        <h1>WELCOME TO THE ADLISTER!</h1>
+        <h1>WELCOME TO THE ADLISTER!</h1>
+        <h1>WELCOME TO THE ADLISTER!</h1>
+        <h1>WELCOME TO THE ADLISTER!</h1>
+        <h1>WELCOME TO THE ADLISTER!</h1>
         <h1>WELCOME TO THE ADLISTER!</h1>
     </div>
 </body>
