@@ -1,10 +1,14 @@
 package com.codeup.adlister.models;
 
+import java.util.List;
+
 public class Ad {
     private long id;
     private long userId;
     private String title;
     private String description;
+
+    private String categories;
 
 
     // This constructor is used when a single instance of an ad id being retrieved
@@ -14,6 +18,14 @@ public class Ad {
         this.userId = userId;
         this.title = title;
         this.description = description;
+    }
+
+    public Ad(long id, long userId, String title, String description, String categories) {
+        this.id = id;
+        this.userId = userId;
+        this.title = title;
+        this.description = description;
+        this.categories = categories;
     }
 
     // This constructor is used when a single instance of an Ad is being inserted
@@ -54,5 +66,13 @@ public class Ad {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getCategories() {
+        return categories;
+    }
+
+    public void setCategories(String categories) {
+        this.categories = categories;
     }
 }

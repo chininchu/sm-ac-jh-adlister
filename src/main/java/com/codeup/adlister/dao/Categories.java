@@ -9,4 +9,6 @@ public interface Categories {
 //    int getCategoryId(String x);
 
     int getCategoryId(String x);
+
+    String getCategoryName(int x);
 }
