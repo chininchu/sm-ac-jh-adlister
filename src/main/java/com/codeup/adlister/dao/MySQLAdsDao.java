@@ -87,8 +87,28 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+
+    // The deleteAd method will delete a single instance of an Ad
+
     @Override
-    public void delete(Ad ad) {
+    public void deleteAd(Ad ad) {
+
+        try {
+
+            PreparedStatement stmt = connection.prepareStatement("DELETE FROM ads WHERE id = ?");
+
+            stmt.setLong(1, ad.getId());
+
+            stmt.executeUpdate();
+
+
+        } catch (SQLException e) {
+
+            throw new RuntimeException("Unable to delete an Ad", e);
+
+
+        }
+
 
     }
 
@@ -150,7 +170,6 @@ public class MySQLAdsDao implements Ads {
 
 
     }
-
 
 
 }

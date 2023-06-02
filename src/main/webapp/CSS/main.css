@@ -1,5 +1,4 @@
 body {
-    background-color: salmon;
     font-family: Arial, sans-serif;
 }
 
@@ -38,5 +37,14 @@ body {
     margin-bottom: 15px;
     color: #666;
     font-style: italic;
-    ;
 }
+
+/* Add the color properties for the login and recent listings titles */
+h1 {
+    color: #2a211a;
+}
+.container{
+    background-color: #ab968a;
+}
+
+

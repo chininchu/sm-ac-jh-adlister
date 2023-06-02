@@ -7,80 +7,127 @@
     </jsp:include>
     <link rel="stylesheet" href="/CSS/main.css">
     <style>
-        h1{
+        h1 {
             text-decoration: blue;
         }
-    </style>
 
+        .ads-container {
+            width: 100%;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding-bottom: 20px;
+        }
+
+        .ad-column {
+            display: inline-block;
+            vertical-align: top;
+            white-space: normal;
+            width: 300px;
+            margin-right: 20px;
+        }
+
+        .ad-bubble {
+            background-color: #f1f1f1;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .ad-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .ad-description {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .ad-actions {
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 
 <div class="container">
-    <h1>List of all Ads: </h1>
+    <h1>List of all Ads:</h1>
 
+    <div class="ads-container">
+        <c:forEach var="ad" items="${ads}">
+            <div class="ad-column">
+                <div class="ad-bubble">
+                    <h2 class="ad-title">${ad.title}</h2>
+                    <p class="ad-description">${ad.description}</p>
+                    <div class="ad-actions">
+                        <form action="/editAd" method="get">
+                            <input name="title" type="hidden" value="${ad.title}">
+                            <input name="description" type="hidden" value="${ad.description}">
+                            <input name="id" type="hidden" value="${ad.id}">
+                            <button>Edit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
+    </div>
+=======
     <c:forEach var="ad" items="${ads}">
-        <%--        <div class="col-md-6">--%>
-        <%--            <h2>${ad.title}</h2>--%>
-        <%--            <a href="index.jsp?id=${ad.id}">Edit</a>--%>
 
-        <%--            <p>${ad.description}</p>--%>
-        <%--            <a href="index.jsp?id=${ad.id}">Edit</a>--%>
-
-        <%--        &lt;%&ndash;            This dynamically renders the edit button&ndash;%&gt;--%>
-
-        <%--        </div>--%>
 
         <form action="/editAd" method="get">
-        <div class="container">
-            <div class="col-md-6">
-                <h2> ${ad.title}</h2>
-                <input name="title" type="hidden" value="${ad.title}">
+            <div class="container">
+                <div class="col-md-6">
+                    <h2> ${ad.title}</h2>
+                    <input name="title" type="hidden" value="${ad.title}">
 
-            <%--                <button type="hidden" value="${ad.id}">Edit</button>--%>
-                <p>${ad.description}</p>
 
-                <p>${ad.categories}</p>
+                    <p>${ad.description}</p>
 
-                <input name="description" type="hidden" value="${ad.description.toString()}">
+                    <input name="description" type="hidden" value="${ad.description}">
 
-                <button>Edit</button>
-                <input name="id" type="hidden" value="${ad.id}">
+                    <button>Edit</button>
+                    <input name="id" type="hidden" value="${ad.id}">
+
+
+
+                </div>
             </div>
-        </div>
         </form>
 
 
-        <%--        <table>--%>
-        <%--            <tr>--%>
-        <%--                <th>ID</th>--%>
-        <%--                <th>title</th>--%>
-        <%--                <th>description</th>--%>
-        <%--            </tr>--%>
-        <%--            <c:forEach items="${ads}" var="ad">--%>
-        <%--                <tr>--%>
-        <%--                    <td>${ad.id}</td>--%>
-        <%--                    <td>${ad.title}</td>--%>
-        <%--                    <td>${ad.description}</td>--%>
+        <form action="/deleteAd" method="post">
+            <!-- Input field for Advertisement ID -->
 
-        <%--                    <td>--%>
-        <%--                        <a href="index.jsp?id=${ad.id}">Edit</a>--%>
-        <%--                    </td>--%>
-        <%--                </tr>--%>
+            <button>Delete</button>
+
+            <input name="id" type="hidden" value="${ad.id}">
+
+            <input name="title" type="hidden" value="${ad.title}">
+
+            <input name="description" type="hidden" value="${ad.description}">
 
 
-        <%--                <form action="/ads" method="post">--%>
-        <%--                    <input type="hidden" name="id" value="${ad.id}" />--%>
-        <%--                    <label for="title">title:</label>--%>
-        <%--                    <input type="text" name="title" value="${ad.title}" /><br />--%>
-        <%--                    <input type="submit" value="Save" />--%>
-        <%--                </form>--%>
-
-        <%--            </c:forEach>--%>
-        <%--        </table>--%>
+        </form>
 
 
     </c:forEach>
+
+    <%--    <form action="/deleteAd" method="get">--%>
+    <%--        <!-- Input field for Advertisement ID -->--%>
+
+    <%--        <button>Delete</button>--%>
+
+    <%--        <input name="id" type="hidden" value="${Ad.id}">--%>
+
+    <%--        <input name="title" type="hidden" value="${Ad.title}">--%>
+
+    <%--        <input name="description" type="hidden" value="${Ad.description}">--%>
+
+
+    <%--    </form>--%>
 </div>
 
 </body>

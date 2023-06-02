@@ -12,7 +12,7 @@ public interface Ads {
     Long insert(Ad ad);
     List<Ad> adsByUserId(long userId);
 
-    void delete(Ad ad);
+    void deleteAd(Ad ad);
 
 
     // Retrieves a single Ad for a user so that they know what is being edited on the jsp page
@@ -23,6 +23,9 @@ public interface Ads {
     // Edits a single Ad
 
     void editAd(Ad ad);
+
+
+
 
 
 
