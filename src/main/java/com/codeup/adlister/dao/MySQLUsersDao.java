@@ -1,5 +1,7 @@
 package com.codeup.adlister.dao;
 
+import com.codeup.adlister.config.Config;
+
 import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
@@ -12,15 +14,13 @@ public class MySQLUsersDao implements Users {
         try {
             DriverManager.registerDriver(new Driver());
             connection = DriverManager.getConnection(
-                config.getURL(),
-                config.getUSER(),
-                config.getPASSWORD()
-            );
+                    config.getURL(),
+                    config.getUSER(),
+                    config.getPASSWORD());
         } catch (SQLException e) {
             throw new RuntimeException("Error connecting to the database!", e);
         }
     }
-
 
     @Override
     public User findByUsername(String username) {
@@ -38,8 +38,7 @@ public class MySQLUsersDao implements Users {
     public void update(User user) {
         try {
             PreparedStatement statement = connection.prepareStatement(
-                    "UPDATE users SET username = ?, password = ?, email = ? WHERE id = ?"
-            );
+                    "UPDATE users SET username = ?, password = ?, email = ? WHERE id = ?");
             statement.setString(1, user.getUsername());
             statement.setString(2, user.getPassword());
             statement.setString(3, user.getEmail());
@@ -82,6 +81,7 @@ public class MySQLUsersDao implements Users {
             throw new RuntimeException("Error deleting ad.", e);
         }
     }
+
     public void delete(long userId) {
         try {
             String deleteQuery = "DELETE FROM users WHERE id = ?";
@@ -99,19 +99,15 @@ public class MySQLUsersDao implements Users {
 
     }
 
-
     private User extractUser(ResultSet rs) throws SQLException {
-        if (! rs.next()) {
+        if (!rs.next()) {
             return null;
         }
         return new User(
-            rs.getLong("id"),
-            rs.getString("username"),
-            rs.getString("email"),
-            rs.getString("password")
-        );
+                rs.getLong("id"),
+                rs.getString("username"),
+                rs.getString("email"),
+                rs.getString("password"));
     }
 
-    }
-
-
+}

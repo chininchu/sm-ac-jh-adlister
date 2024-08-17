@@ -1,4 +1,12 @@
+
+CREATE DATABASE IF NOT EXISTS adlister_db;
 USE adlister_db;
+
+-- Insert the content of the schema artifact here
+
+-- Optionally, you could add initial data insertion here
+
+
 
 DROP TABLE IF EXISTS ads;
 DROP TABLE IF EXISTS users;

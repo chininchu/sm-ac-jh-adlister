@@ -3,6 +3,7 @@ package com.codeup.adlister.dao;
 import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
+import com.codeup.adlister.config.Config;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -20,8 +21,7 @@ public class MySQLAdsDao implements Ads {
             connection = DriverManager.getConnection(
                     config.getURL(),
                     config.getUSER(),
-                    config.getPASSWORD()
-            );
+                    config.getPASSWORD());
         } catch (SQLException e) {
             throw new RuntimeException("Error connecting to the database!", e);
         }
@@ -62,8 +62,7 @@ public class MySQLAdsDao implements Ads {
                 rs.getLong("user_id"),
                 rs.getString("title"),
                 rs.getString("description"),
-                DaoFactory.getAd_CategoriesDao().getByAdId(rs.getLong("id"))
-        );
+                DaoFactory.getAd_CategoriesDao().getByAdId(rs.getLong("id")));
     }
 
     private List<Ad> createAdsFromResults(ResultSet rs) throws SQLException {
@@ -87,7 +86,6 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
-
     // The deleteAd method will delete a single instance of an Ad
 
     @Override
@@ -101,23 +99,18 @@ public class MySQLAdsDao implements Ads {
 
             stmt.executeUpdate();
 
-
         } catch (SQLException e) {
 
             throw new RuntimeException("Unable to delete an Ad", e);
 
-
         }
-
 
     }
 
-
-    // This method will retrieve a single Ad so that the user is able to view what they are editing
-
+    // This method will retrieve a single Ad so that the user is able to view what
+    // they are editing
 
     public Ad singleAd(long id) {
-
 
         try {
 
@@ -133,23 +126,18 @@ public class MySQLAdsDao implements Ads {
 
             Ad singleAd = extractAd(rs);
 
-
             // Returns a single instance
 
             return singleAd;
-
 
         } catch (SQLException e) {
             throw new RuntimeException("Error retrieving an ad.", e);
         }
 
-
     }
-
 
     @Override
     public void editAd(Ad ad) {
-
 
         try {
 
@@ -160,20 +148,12 @@ public class MySQLAdsDao implements Ads {
             stmt.setString(2, ad.getDescription());
             stmt.setLong(3, ad.getId());
 
-
             stmt.executeUpdate();
-
 
         } catch (Exception e) {
             throw new RuntimeException("Error retrieving an ad.", e);
         }
 
-
     }
 
-
 }
-
-
-
-
